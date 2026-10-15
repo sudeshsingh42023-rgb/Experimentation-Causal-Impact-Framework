@@ -1,0 +1,9 @@
+segment,n,lift_pp,p_raw,p_holm,significant_after_holm
+age_band=<25,10125,1.54,0.00561,0.0448,True
+salary=1,18104,0.98,0.0289,0.203,False
+ten_band=<=6m,10022,1.03,0.0599,0.359,False
+salary=0,21896,0.6,0.0783,0.391,False
+age_band=35+,12961,0.85,0.0806,0.391,False
+ten_band=13m+,20044,0.66,0.0946,0.391,False
+ten_band=7-12m,9934,0.68,0.221,0.442,False
+age_band=25-34,16914,0.22,0.605,0.605,False

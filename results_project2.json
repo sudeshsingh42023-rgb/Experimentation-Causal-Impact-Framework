@@ -1,0 +1,204 @@
+{
+  "A_design": {
+    "primary_metric": "30-day savings-pot activation",
+    "baseline": 0.08,
+    "MDE_abs": 0.01,
+    "alpha": 0.05,
+    "power": 0.8,
+    "n_per_arm_required": 12208
+  },
+  "A_srm": {
+    "treatment": 19983,
+    "control": 20017,
+    "chi2": 0.029,
+    "p": 0.865,
+    "verdict": "PASS (no sample-ratio mismatch)"
+  },
+  "A_primary": {
+    "control_rate": 0.0805,
+    "treatment_rate": 0.0881,
+    "abs_lift_pp": 0.76,
+    "rel_lift_pct": 9.4,
+    "ci95_pp": [
+      0.21,
+      1.3
+    ],
+    "p_value": 0.00627
+  },
+  "A_aa_test": {
+    "simulations": 2000,
+    "false_positive_rate": 0.054,
+    "expected": 0.05
+  },
+  "A_power_check": {
+    "empirical_power_at_planned_n": 0.795,
+    "target": 0.8
+  },
+  "A_cuped": {
+    "effect_raw_gbp": 19.33,
+    "se_raw": 10.61,
+    "effect_cuped_gbp": 24.25,
+    "se_cuped": 8.33,
+    "variance_reduction_pct": 38.3,
+    "ci95_cuped_gbp": [
+      7.91,
+      40.58
+    ],
+    "implied_sample_size_saving_pct": 38.3
+  },
+  "A_guardrail_optout": {
+    "control": 0.0288,
+    "treatment": 0.0323,
+    "diff_pp": 0.35,
+    "upper_95_one_sided_pp": 0.63,
+    "margin_pp": 0.5,
+    "verdict": "NOT ESTABLISHED - upper bound exceeds margin; stage rollout"
+  },
+  "A_segments_holm": [
+    {
+      "segment": "age_band=<25",
+      "n": 10125,
+      "lift_pp": 1.54,
+      "p_raw": 0.00561,
+      "p_holm": 0.0448,
+      "significant_after_holm": true
+    },
+    {
+      "segment": "salary=1",
+      "n": 18104,
+      "lift_pp": 0.98,
+      "p_raw": 0.0289,
+      "p_holm": 0.203,
+      "significant_after_holm": false
+    },
+    {
+      "segment": "ten_band=<=6m",
+      "n": 10022,
+      "lift_pp": 1.03,
+      "p_raw": 0.0599,
+      "p_holm": 0.359,
+      "significant_after_holm": false
+    },
+    {
+      "segment": "salary=0",
+      "n": 21896,
+      "lift_pp": 0.6,
+      "p_raw": 0.0783,
+      "p_holm": 0.391,
+      "significant_after_holm": false
+    },
+    {
+      "segment": "age_band=35+",
+      "n": 12961,
+      "lift_pp": 0.85,
+      "p_raw": 0.0806,
+      "p_holm": 0.391,
+      "significant_after_holm": false
+    },
+    {
+      "segment": "ten_band=13m+",
+      "n": 20044,
+      "lift_pp": 0.66,
+      "p_raw": 0.0946,
+      "p_holm": 0.391,
+      "significant_after_holm": false
+    },
+    {
+      "segment": "ten_band=7-12m",
+      "n": 9934,
+      "lift_pp": 0.68,
+      "p_raw": 0.221,
+      "p_holm": 0.442,
+      "significant_after_holm": false
+    },
+    {
+      "segment": "age_band=25-34",
+      "n": 16914,
+      "lift_pp": 0.22,
+      "p_raw": 0.605,
+      "p_holm": 0.605,
+      "significant_after_holm": false
+    }
+  ],
+  "A_economics": {
+    "assumptions": {
+      "annual_NIM": 0.02,
+      "cost_per_treated_customer_gbp": 0.05
+    },
+    "incremental_annual_margin_per_treated_gbp": 0.44,
+    "ci95": [
+      0.13,
+      0.77
+    ],
+    "incremental_activations_per_100k_customers": 759,
+    "incremental_annual_margin_if_rolled_to_500k_gbp": 219733
+  },
+  "B_scenario1_parallel_trends_hold": {
+    "naive_post_diff": 71.82,
+    "ols_adjusted": 22.97,
+    "did_unmatched": 21.89,
+    "psm_post_diff": 22.89,
+    "psm_did": 22.89,
+    "psm_did_ci95": [
+      22.41,
+      23.39
+    ],
+    "true_effect": 22.0,
+    "diagnostics": {
+      "n_treated": 8328,
+      "n_matched_pairs": 8324,
+      "treated_retained_pct": 100.0,
+      "SMD_before": {
+        "age": 0.007,
+        "salary": 0.334,
+        "tenure": -0.009,
+        "sessions": 0.612,
+        "pre_spend_avg": 0.746
+      },
+      "SMD_after": {
+        "age": -0.01,
+        "salary": -0.003,
+        "tenure": 0.001,
+        "sessions": -0.002,
+        "pre_spend_avg": -0.0
+      },
+      "pretrend_slope_gbp_per_month": -0.136,
+      "pretrend_p": 0.191,
+      "pretrend_verdict": "parallel trends plausible"
+    }
+  },
+  "B_scenario2_parallel_trends_violated": {
+    "naive_post_diff": 95.59,
+    "ols_adjusted": 41.26,
+    "did_unmatched": 39.78,
+    "psm_post_diff": 41.21,
+    "psm_did": 41.37,
+    "psm_did_ci95": [
+      40.9,
+      41.93
+    ],
+    "true_effect": 22.0,
+    "diagnostics": {
+      "n_treated": 8409,
+      "n_matched_pairs": 8405,
+      "treated_retained_pct": 100.0,
+      "SMD_before": {
+        "age": -0.006,
+        "salary": 0.332,
+        "tenure": -0.024,
+        "sessions": 0.576,
+        "pre_spend_avg": 0.827
+      },
+      "SMD_after": {
+        "age": -0.009,
+        "salary": 0.013,
+        "tenure": 0.013,
+        "sessions": 0.013,
+        "pre_spend_avg": -0.002
+      },
+      "pretrend_slope_gbp_per_month": 3.168,
+      "pretrend_p": 2.12e-196,
+      "pretrend_verdict": "VIOLATED - do not trust DiD"
+    }
+  }
+}
